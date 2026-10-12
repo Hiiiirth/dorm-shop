@@ -1,0 +1,171 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "宿舍小超市",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/category/category",
+      "style": {
+        "navigationBarTitleText": "商品分类",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/product/list",
+      "style": {
+        "navigationBarTitleText": "商品列表"
+      }
+    },
+    {
+      "path": "pages/product/detail",
+      "style": {
+        "navigationBarTitleText": "商品详情"
+      }
+    },
+    {
+      "path": "pages/cart/cart",
+      "style": {
+        "navigationBarTitleText": "购物车"
+      }
+    },
+    {
+      "path": "pages/order/confirm",
+      "style": {
+        "navigationBarTitleText": "确认订单"
+      }
+    },
+    {
+      "path": "pages/order/success",
+      "style": {
+        "navigationBarTitleText": "下单成功"
+      }
+    },
+    {
+      "path": "pages/order/list",
+      "style": {
+        "navigationBarTitleText": "我的订单",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/order/detail",
+      "style": {
+        "navigationBarTitleText": "订单详情"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/mine/profile",
+      "style": {
+        "navigationBarTitleText": "个人资料"
+      }
+    },
+    {
+      "path": "pages/address/list",
+      "style": {
+        "navigationBarTitleText": "收货地址"
+      }
+    },
+    {
+      "path": "pages/address/edit",
+      "style": {
+        "navigationBarTitleText": "编辑地址"
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/admin/dashboard",
+      "style": {
+        "navigationBarTitleText": "经营看板",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/admin/orders",
+      "style": {
+        "navigationBarTitleText": "订单管理",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/admin/order/detail",
+      "style": {
+        "navigationBarTitleText": "订单详情"
+      }
+    },
+    {
+      "path": "pages/admin/manage",
+      "style": {
+        "navigationBarTitleText": "管理"
+      }
+    },
+    {
+      "path": "pages/admin/product/list",
+      "style": {
+        "navigationBarTitleText": "商品管理",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/admin/product/edit",
+      "style": {
+        "navigationBarTitleText": "编辑商品"
+      }
+    },
+    {
+      "path": "pages/admin/category/list",
+      "style": {
+        "navigationBarTitleText": "分类管理",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/admin/category/edit",
+      "style": {
+        "navigationBarTitleText": "编辑分类"
+      }
+    },
+    {
+      "path": "pages/admin/user/list",
+      "style": {
+        "navigationBarTitleText": "用户管理",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/dev/design-preview",
+      "style": {
+        "navigationBarTitleText": "设计系统预览"
+      }
+    },
+    {
+      "path": "pages/dev/self-check",
+      "style": {
+        "navigationBarTitleText": "地基自检"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "宿舍小超市",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F5F6F8",
+    "backgroundColorTop": "#F5F6F8",
+    "backgroundColorBottom": "#F5F6F8"
+  }
+}

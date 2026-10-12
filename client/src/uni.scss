@@ -1,0 +1,225 @@
+/**
+ * 设计 Token · 唯一权威来源
+ * ---------------------------------------------------------------------------
+ * uni-app CLI 会把本文件**自动注入到每个组件的 <style lang="scss"> 里**，
+ * 所以组件里直接用变量即可，不需要 @import。
+ *
+ * ⚠️ 只放「变量声明」，不要写具体 CSS 规则 —— 否则会被复制进每一个组件。
+ *    全局样式规则请写在 App.vue 的 <style> 里。
+ *
+ * 分层：primitive（原始值） → semantic（语义角色） → 组件只用语义名。
+ *      业务页面不要出现 $orange-700 这类原始名。
+ *
+ * 单位约定（本项目的硬性规则）
+ *   · rpx —— 只用于**宽度相关的布局**（栅格、间距、宽高、容器尺寸）
+ *   · px  —— 字号、1px 细线、最小点击区。理由：rpx 会随屏宽放大字号，
+ *           在平板/宽屏上字会变得过大（DCloud 官方也是这么建议的）
+ *   · 触控热区 —— 最小 88rpx（= 44px），主要按钮 96rpx（= 48px）
+ *
+ * 对比度：所有前景/背景组合都按 WCAG 验算过，数值写在注释里。
+ *        改色**必须重新验算**，不要凭感觉调。
+ */
+
+// ===========================================================================
+// 0. uni-app 内置变量（uni 内置组件 / 第三方插件会读这些，必须保留）
+//    这里把默认的蓝色系统一改成我们自己的橙色系，内置组件才会跟着变主题
+// ===========================================================================
+$uni-color-primary: #c7450a;
+$uni-color-success: #0e8a43;
+$uni-color-warning: #b86e00;
+$uni-color-error: #d93a3f;
+
+$uni-text-color: #1a1d23;
+$uni-text-color-inverse: #ffffff;
+$uni-text-color-grey: #68707e;
+$uni-text-color-placeholder: #9aa2af;
+$uni-text-color-disable: #9aa2af;
+
+$uni-bg-color: #ffffff;
+$uni-bg-color-grey: #f5f6f8;
+$uni-bg-color-hover: #f1f3f6;
+$uni-bg-color-mask: rgba(0, 0, 0, 0.4);
+
+$uni-border-color: #ebeff4;
+
+$uni-font-size-sm: 12px;
+$uni-font-size-base: 14px;
+$uni-font-size-lg: 16px;
+
+$uni-img-size-sm: 20px;
+$uni-img-size-base: 26px;
+$uni-img-size-lg: 40px;
+
+$uni-border-radius-sm: 4px;
+$uni-border-radius-base: 8px;
+$uni-border-radius-lg: 12px;
+$uni-border-radius-circle: 50%;
+
+$uni-spacing-row-sm: 4px;
+$uni-spacing-row-base: 8px;
+$uni-spacing-row-lg: 12px;
+
+$uni-spacing-col-sm: 4px;
+$uni-spacing-col-base: 8px;
+$uni-spacing-col-lg: 12px;
+
+$uni-opacity-disabled: 0.3;
+
+$uni-color-title: #1a1d23;
+$uni-font-size-title: 20px;
+$uni-color-subtitle: #59616f;
+$uni-font-size-subtitle: 18px;
+$uni-color-paragraph: #4e5665;
+$uni-font-size-paragraph: 15px;
+
+// ===========================================================================
+// 1. Primitive · 橙（品牌色阶）
+// ===========================================================================
+$orange-500: #ff6a2b; // 品牌识别橙（鲜艳）。⚠️ 白字 2.86:1，只做装饰/图形
+$orange-600: #e8590c; // 白字 3.58:1 —— 仅大号粗体字可用（≥18.66px bold）
+$orange-700: #c7450a; // 白字 4.90:1 / 压在白底 4.90:1 —— 唯一双向都达标的橙
+$orange-800: #a93c08; // 按下态
+$orange-100: #fff1ea; // 柔和底
+$orange-200: #ffd9c4; // 柔和底描边
+
+// ===========================================================================
+// 2. Primitive · 中性灰
+// ===========================================================================
+$gray-900: #1a1d23;
+$gray-700: #4e5665;
+$gray-600: #59616f;
+$gray-500: #68707e;
+$gray-300: #dce2ea;
+$gray-200: #ebeff4;
+$gray-100: #f5f6f8;
+$gray-050: #f7f8fa;
+$white: #ffffff;
+
+// ===========================================================================
+// 3. Semantic · 品牌与操作
+// ===========================================================================
+/// 品牌鲜艳橙：logo、装饰块、进度条、选中指示条。**不承担文字可读性**
+$color-brand-vivid: $orange-500;
+/// 主操作：实底按钮底色、橙色文字、图标。双向对比度均 4.90:1
+$color-action: $orange-700;
+$color-action-pressed: $orange-800;
+$color-action-disabled-bg: #f2f3f6;
+$color-action-disabled-text: #8a94a3;
+/// 柔和底：浅色按钮、标签底、选中项底
+$color-action-soft: $orange-100;
+$color-action-soft-border: $orange-200;
+/// 压在 $color-action / $color-brand-vivid 上的文字
+$color-on-action: $white;
+
+// ===========================================================================
+// 4. Semantic · 背景与面
+// ===========================================================================
+$color-bg-app: $gray-100; // 页面底色
+$color-surface: $white; // 卡片、列表、弹层
+$color-surface-2: $gray-050; // 次级面（分组头、内嵌块）
+$color-surface-sunken: #eef0f4; // 凹陷面（进度槽、占位图底）
+
+// ===========================================================================
+// 5. Semantic · 文字（on $color-bg-app 的实测对比度）
+// ===========================================================================
+$color-text-primary: $gray-900; // 15.61:1
+$color-text-secondary: $gray-700; // 6.83:1
+$color-text-muted: $gray-500; // 4.62:1
+$color-text-inverse: $white; // 压在深色底上
+$color-text-disabled: #9aa2af; // 禁用态（可不满足 4.5）
+
+// ===========================================================================
+// 6. Semantic · 描边
+// ===========================================================================
+$color-border-subtle: $gray-200; // 常规分隔线 / 卡片描边
+$color-border-strong: $gray-300; // 需要更明确边界时（输入框）
+
+// ===========================================================================
+// 7. Semantic · 状态色
+// ---------------------------------------------------------------------------
+// 用法固定为三件套：soft 底 + 彩色图标/圆点 + 深色文字（$color-text-primary）。
+// 这样「颜色」只是冗余线索，不是唯一线索 —— 色盲用户也能靠文字区分。
+// 下面注释里的比值是「状态色 压在 自己的 soft 底 上」。
+// ===========================================================================
+$color-success: #0e8a43; // 4.01:1
+$color-success-soft: #e8f7ee;
+$color-warning: #b86e00; // 3.63:1
+$color-warning-soft: #fdf3e3;
+$color-danger: #d93a3f; // 3.97:1
+$color-danger-soft: #fdecec;
+
+// ===========================================================================
+// 8. 字号与字重
+// ===========================================================================
+$font-size-xs: 12px; // 仅用于确实次要的元信息
+$font-size-sm: 14px; // 正文默认
+$font-size-md: 16px; // 强调正文 / 列表主标题
+$font-size-lg: 18px; // 区块标题
+$font-size-xl: 22px; // 页面大标题
+$font-size-xxl: 28px; // 金额、关键数字
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+// 700 只用在「页面主标题」和「榜单名次数字」这两处。
+// 中文在 700 下的字形加粗明显，用在中文字号 16px 以上才好看。
+$font-weight-bold: 700;
+
+$line-height-tight: 1.35;
+$line-height-normal: 1.5;
+$line-height-loose: 1.6;
+
+// ===========================================================================
+// 9. 间距（4px 栅格，8px 为默认节奏）
+// ===========================================================================
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+
+/// 页面左右安全边距
+$page-padding-x: 16px;
+
+// ===========================================================================
+// 10. 圆角
+// ===========================================================================
+$radius-xs: 4px;
+$radius-sm: 8px; // 控件（按钮、输入框）
+$radius-md: 12px; // 卡片
+$radius-lg: 16px; // 大卡片 / 弹层
+$radius-xl: 20px; // 底部弹层
+$radius-pill: 999px; // 胶囊标签 / 头像
+
+// ===========================================================================
+// 11. 尺寸
+// ===========================================================================
+$touch-min: 88rpx; // 44px 最小触控热区
+$touch-primary: 96rpx; // 48px 主要按钮
+$navbar-height: 88rpx; // 自绘导航条内容区高度（不含状态栏）
+$tabbar-height: 100rpx; // 自绘底部 tab 内容区高度（不含安全区）
+$avatar-sm: 64rpx;
+$avatar-md: 88rpx;
+$avatar-lg: 128rpx;
+$thumb-sm: 120rpx;
+$thumb-md: 160rpx;
+$thumb-lg: 320rpx;
+
+// ===========================================================================
+// 12. 动效（只动 opacity / transform，禁止 transition: all）
+// ===========================================================================
+$motion-press: 100ms; // 按压反馈
+$motion-state: 160ms; // 状态切换
+$motion-structural: 220ms; // 页面 / 弹层 / 结构性变化
+$easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+// ===========================================================================
+// 13. 层级
+// ===========================================================================
+$z-sticky: 10;
+$z-tabbar: 100;
+$z-mask: 900;
+$z-sheet: 1000;
+$z-toast: 1100;
