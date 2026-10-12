@@ -2,31 +2,6 @@
 
 uni-app 小程序 + NestJS 后端 + MySQL 8。
 
-## 目录结构
-
-```
-wechatseller/
-├── db/                        # 数据库
-│   ├── 01-schema.sql          # 建库建表（8 张表）
-│   ├── 02-seed.sql            # 种子数据（2 用户 / 5 分类 / 12 商品）
-│   └── docker-compose.yml     # 本地 MySQL + Redis（可选）
-├── server/                    # 后端 NestJS
-└── client/                    # 前端 uni-app
-```
-
-## 当前进度
-
-| 阶段 | 内容 | 状态 |
-|---|---|---|
-| S1 | 数据库 DDL + 种子数据 | ✅ 已导入 MySQL 并校验 |
-| S2 | 后端骨架 + 全局公共层 | ✅ 自检 6/6 |
-| S3 | health + 认证 / 用户模块 | ✅ 自检 28/28 |
-| S4-1 | 分类 / 商品 / 首页聚合 | ✅ 自检 39/39 |
-| S4-2 | 购物车 | ✅ 自检 42/42 |
-| S5 | 下单 / 订单查询 / 取消 | ✅ 自检 95/95 |
-| S6 | 管理端（分类商品 CRUD / 订单处理 / 用户身份 / 经营看板） | ✅ 自检 223/223 |
-| S7-0 ~ S7-3 | 前端 uni-app（登录 / 商品 / 购物车 / 下单 / 订单 / 我的） | ✅ 自检 141/141 |
-
 ## 业务流程（v1.2）
 
 ```
@@ -36,16 +11,6 @@ wechatseller/
                 （未送达都能取消）
 ```
 
-**没有派单端。** 顾客下单后订单就是「待接单」，店长在管理端看到并处理：
-
-| 谁 | 动作 | 接口 |
-|---|---|---|
-| 店长 | 接单（开始处理） | `POST /admin/orders/:id/accept` |
-| 店长 | 确认送达 | `POST /admin/orders/:id/deliver`（可从 PENDING 直达） |
-| 店长 | 取消订单 | `POST /admin/orders/:id/cancel` |
-| 顾客 | 取消订单 | `POST /orders/:id/cancel`（PENDING / DELIVERING 都可） |
-
-身份只有两种：**顾客** 和 **店长**。营收只算 `DELIVERED`。
 
 ## 环境要求
 
@@ -160,10 +125,6 @@ npm run dev:mp-weixin
 > - **小程序**：用绝对地址 `http://127.0.0.1:3000/api/v1`。真机调试时要把 `127.0.0.1`
 >   换成电脑的局域网 IP，并在微信开发者工具里勾上「不校验合法域名」
 
-### 4. 自检脚本
-
-作者用这些脚本来验收。**clone 的人不必全跑**，但跑通了说明环境没问题。
-
 #### 后端（`server/scripts/`）
 
 ```powershell
@@ -224,8 +185,6 @@ node scripts/verify-pages.mjs             # 163 项：全部页面的结构与�
 - 控制器里静态路由必须声明在 `:id` 之前，`:id` 一律用 `IntParamPipe`
 - `order` 是 MySQL 保留字，SQL 里必须加反引号
 
-更细的接口清单、响应规范与设计取舍写在项目内 `docs/`（**未随仓库开源**）。
-
 ## 安全：哪些东西不会（也不该）进仓库
 
 `.gitignore` 挡掉了三类东西，**请不要用 `git add -f` 强行绕过**：
@@ -234,10 +193,7 @@ node scripts/verify-pages.mjs             # 163 项：全部页面的结构与�
 |---|---|
 | `server/.env` | 里面是数据库密码、JWT 签名密钥、微信 AppSecret。一旦提交，任何能看到仓库的人都能连你的数据库、伪造登录态 |
 | `.workbuddy/` | AI 助手的工作目录，含浏览器用户数据、会话记忆、文档备份 —— 体积大，而且带本机使用痕迹 |
-| `node_modules/`、`**/dist/` | 依赖和构建产物。clone 的人自己 `npm install` / `npm run build` 就行 |
-
-**唯一的例外是 `server/.env.example`** —— 它是模板，只有占位符，**必须**留在仓库里，
-别人靠它才知道需要配哪些变量。
+| `node_modules/`、`**/dist/` | 依赖和构建产物。clone 可以 `npm install` / `npm run build` 就行 |
 
 ### 部署前必须改的三处
 
@@ -256,5 +212,5 @@ node scripts/verify-pages.mjs             # 163 项：全部页面的结构与�
 
 ## 许可
 
-本项目为课程 / 学习用途。内置图标来自 [lucide](https://lucide.dev) 与 morphicons，
+内置图标来自 [lucide](https://lucide.dev) 与 morphicons，
 使用前请自行确认并遵循其各自的许可协议。
